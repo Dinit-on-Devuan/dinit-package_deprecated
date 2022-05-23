@@ -2,7 +2,7 @@
 ## Copyright (C) 2022 Dinit on Devuan
 ## LISENCE: GPLv3 or later
 ## Originaly author: Mobin Aydinfar <mobin@mobintestserver.ir>
-## Maintainer: Dinit on Devuan Project <mobin@mobintestserver.ir>
+# Maintainer: Dinit on Devuan Project <mobin@mobintestserver.ir>
 
 pkgname=('dinit')
 pkgver=0.14.0
@@ -41,7 +41,7 @@ build() {
 
 check() {
   cd "$srcdir"/"$pkgname-$pkgver"/
-  make DESTDIR="$pkgdir/" chech
+  make DESTDIR="$pkgdir/" check
   make DESTDIR="$pkgdir/" check-igr
 }
 
