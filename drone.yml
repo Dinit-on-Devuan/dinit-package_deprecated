@@ -1,0 +1,21 @@
+kind: pipeline
+name: dinit-package
+
+steps:
+- name: build_amd64_chimaera
+  image: dyne/devuan:chimaera
+  pull: always
+  commands:
+  - su root
+  - apt update
+  - wget -qO - 'https://proget.makedeb.org/debian-feeds/makedeb.pub' | gpg --dearmor | sudo tee /usr/share/keyrings/makedeb-archive-keyring.gpg 1> /dev/null
+  - echo 'deb [signed-by=/usr/share/keyrings/makedeb-archive-keyring.gpg arch=all] https://proget.makedeb.org/ makedeb main' | sudo tee /etc/apt/sources.list.d/makedeb.list
+  - apt update
+  - apt install makedeb -y
+  - apt install sudo -y
+  - useradd builduser -m
+  - passwd -d builduser
+  - printf 'builduser ALL=(ALL) ALL\n' | tee -a /etc/sudoers # passwordless sudo
+  - chown -R builduser:builduser ./
+  - sudo -u builduser makedeb -si
+  - ls -lah *.deb
