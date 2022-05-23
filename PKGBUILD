@@ -24,7 +24,7 @@ provides=('init')
 ## Issue #190: https://github.com/makedeb/makedeb/issues/190
 #priority='high'
 
-makedepends=('gcc' 'make' 'g++')
+makedepends=('gcc' 'make' 'g++' 'm4')
 source=("$url/releases/download/v$pkgver/$pkgname-$pkgver.tar.xz")
 
 ## Warning: Its checksum only valid for 0.14.0! change it if you want newer/older version
