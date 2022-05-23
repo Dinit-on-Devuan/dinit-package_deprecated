@@ -18,5 +18,7 @@ steps:
   - passwd -d builduser
   - printf 'builduser ALL=(ALL) ALL\n' | tee -a /etc/sudoers # passwordless sudo
   - chown -R builduser:builduser ./
+## Note: we must install makedepends with this command. makedeb is buggy!
+  - apt install g++ make m4 -y
   - sudo -u builduser makedeb -si
   - ls -lah *.deb
