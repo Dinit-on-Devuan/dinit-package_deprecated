@@ -20,6 +20,7 @@ steps:
   - mkdir build_chimaera
   - chown -R builduser:builduser ./
   - cd build_chimaera
+  - cp ../PKGBUILD .
   - sudo -u builduser makedeb -si --no-confirm
   - ls -lah *.deb
   - cd ..
@@ -49,6 +50,7 @@ steps:
   - mkdir build_beowulf
   - chown -R builduser:builduser ./
   - cd build_beowulf
+  - cp ../PKGBUILD .
   - sudo -u builduser makedeb -si --no-confirm
   - ls -lah *.deb
   - cd ..
@@ -60,8 +62,6 @@ steps:
   commands:
   - su root
   - apt update
-  - apt upgrade -y # We need upgrade system packages on devuan ceres for building
-  - apt autopurge -y # We need purge old packages on devuan ceres for building
   - apt install gpg -y
   - wget -qO - 'https://proget.makedeb.org/debian-feeds/makedeb.pub' | gpg --dearmor | tee /usr/share/keyrings/makedeb-archive-keyring.gpg 1> /dev/null
   - echo 'deb [signed-by=/usr/share/keyrings/makedeb-archive-keyring.gpg arch=all] https://proget.makedeb.org/ makedeb main' | tee /etc/apt/sources.list.d/makedeb.list
@@ -75,6 +75,7 @@ steps:
   - mkdir build_ceres
   - chown -R builduser:builduser ./
   - cd build_ceres
+  - cp ../PKGBUILD .
   - sudo -u builduser makedeb -si --no-confirm
   - ls -lah *.deb
   - cd ..
