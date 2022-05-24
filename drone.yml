@@ -21,6 +21,7 @@ steps:
   - sudo -u builduser makedeb -si --no-confirm
   - ls -lah *.deb
 
+## beowulf building is buggy! Disabled for now
 #- name: build_amd64_beowulf
 #  image: dyne/devuan:beowulf
 #  pull: always
@@ -62,5 +63,6 @@ steps:
   - passwd -d builduser
   - printf 'builduser ALL=(ALL) ALL\n' | tee -a /etc/sudoers # passwordless sudo
   - chown -R builduser:builduser ./
+  - apt install g++ make m4 -y
   - sudo -u builduser makedeb -si --no-confirm
   - ls -lah *.deb
