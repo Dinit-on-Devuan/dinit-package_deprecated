@@ -21,7 +21,7 @@ steps:
   - chown -R builduser:builduser ./
   - cd build_chimaera
   - cp ../PKGBUILD .
-  - sudo -u builduser makedeb -si --no-confirm
+  - sudo -u builduser makedeb -s --no-confirm
   - ls -lah *.deb
   - cd ..
   - exit 0
@@ -51,7 +51,7 @@ steps:
   - chown -R builduser:builduser ./
   - cd build_beowulf
   - cp ../PKGBUILD .
-  - sudo -u builduser makedeb -si --no-confirm
+  - sudo -u builduser makedeb -s --no-confirm
   - ls -lah *.deb
   - cd ..
   - exit 0
@@ -76,7 +76,7 @@ steps:
   - chown -R builduser:builduser ./
   - cd build_ceres
   - cp ../PKGBUILD .
-  - sudo -u builduser makedeb -si --no-confirm
+  - sudo -u builduser makedeb -s --no-confirm
   - ls -lah *.deb
   - cd ..
   - exit 0
