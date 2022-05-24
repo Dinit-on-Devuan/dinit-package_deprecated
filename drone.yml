@@ -38,5 +38,10 @@ steps:
   - passwd -d builduser
   - printf 'builduser ALL=(ALL) ALL\n' | tee -a /etc/sudoers # passwordless sudo
   - chown -R builduser:builduser ./
+
+  # Fix [E: Invalid operation satisfy] on beowulf
+  # Devuan beowulf does not support [apt satisfy]. We need install makedepends manualy
+  - apt install g++ make m4
+
   - sudo -u builduser makedeb -si --no-confirm
   - ls -lah *.deb
