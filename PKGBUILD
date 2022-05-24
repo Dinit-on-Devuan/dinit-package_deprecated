@@ -34,9 +34,7 @@ build() {
   cd "$srcdir"/"$pkgname-$pkgver"/configs
   chmod +x mconfig.Linux.sh
   sh ./mconfig.Linux.sh
-  mv mconfig.Linux ../
-  cd "$srcdir"
-  mv mconfig.Linux "$pkgname-$pkgver"/mconfig
+  mv mconfig.Linux ../mconfig
   cd "$pkgname-$pkgver"
   make DESTDIR="$pkgdir/"
 }
