@@ -48,25 +48,24 @@ steps:
 #  - ls -lah *.deb
 
 ## ceres building is buggy! Disabled for now
-#- name: build_amd64_ceres
-#  image: dyne/devuan:ceres
-#  pull: always
-#  commands:
-#  - su root
-#  - apt update
-#  - apt upgrade -y # We need upgrade system packages on devuan ceres for building
-#  - apt autopurge -y # We need purge old packages on devuan ceres for building
-#  - apt purge gcc-9-base -y # We need purge gcc-9 on devuan ceres for building
-#  - apt install gpg -y
-#  - wget -qO - 'https://proget.makedeb.org/debian-feeds/makedeb.pub' | gpg --dearmor | tee /usr/share/keyrings/makedeb-archive-keyring.gpg 1> /dev/null
-#  - echo 'deb [signed-by=/usr/share/keyrings/makedeb-archive-keyring.gpg arch=all] https://proget.makedeb.org/ makedeb main' | tee /etc/apt/sources.list.d/makedeb.list
-#  - apt update
-#  - apt install makedeb -y
-#  - apt install sudo -y
-#  - useradd builduser -m
-#  - passwd -d builduser
-#  - printf 'builduser ALL=(ALL) ALL\n' | tee -a /etc/sudoers # passwordless sudo
-#  - chown -R builduser:builduser ./
-#  - apt install g++ make m4 -y
-#  - sudo -u builduser makedeb -si --no-confirm
-#  - ls -lah *.deb
+- name: build_amd64_ceres
+  image: dyne/devuan:ceres
+  pull: always
+  commands:
+  - su root
+  - apt update
+  - apt upgrade -y # We need upgrade system packages on devuan ceres for building
+  - apt autopurge -y # We need purge old packages on devuan ceres for building
+  - apt install gpg -y
+  - wget -qO - 'https://proget.makedeb.org/debian-feeds/makedeb.pub' | gpg --dearmor | tee /usr/share/keyrings/makedeb-archive-keyring.gpg 1> /dev/null
+  - echo 'deb [signed-by=/usr/share/keyrings/makedeb-archive-keyring.gpg arch=all] https://proget.makedeb.org/ makedeb main' | tee /etc/apt/sources.list.d/makedeb.list
+  - apt update
+  - apt install makedeb -y
+  - apt install sudo -y
+  - useradd builduser -m
+  - passwd -d builduser
+  - printf 'builduser ALL=(ALL) ALL\n' | tee -a /etc/sudoers # passwordless sudo
+  - chown -R builduser:builduser ./
+  - apt install g++ make m4 build-essential -y
+  - sudo -u builduser makedeb -si --no-confirm
+  - ls -lah *.deb
