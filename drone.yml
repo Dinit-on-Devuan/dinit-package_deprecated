@@ -17,8 +17,8 @@ steps:
   - useradd builduser -m
   - passwd -d builduser
   - printf 'builduser ALL=(ALL) ALL\n' | tee -a /etc/sudoers # passwordless sudo
-  - chown -R builduser:builduser ./
   - mkdir build_chimaera
+  - chown -R builduser:builduser ./
   - cd build_chimaera
   - sudo -u builduser makedeb -si --no-confirm
   - ls -lah *.deb
@@ -41,13 +41,13 @@ steps:
   - useradd builduser -m
   - passwd -d builduser
   - printf 'builduser ALL=(ALL) ALL\n' | tee -a /etc/sudoers # passwordless sudo
-  - chown -R builduser:builduser ./
 
   # Fix [E: Invalid operation satisfy] on beowulf
   # Devuan beowulf does not support [apt satisfy]. We need install makedepends manualy
-  - apt install g++ make m4 -y
+  - apt install g++ make m4 build-essential -y
 
   - mkdir build_beowulf
+  - chown -R builduser:builduser ./
   - cd build_beowulf
   - sudo -u builduser makedeb -si --no-confirm
   - ls -lah *.deb
@@ -71,9 +71,9 @@ steps:
   - useradd builduser -m
   - passwd -d builduser
   - printf 'builduser ALL=(ALL) ALL\n' | tee -a /etc/sudoers # passwordless sudo
-  - chown -R builduser:builduser ./
   - apt install g++ make m4 build-essential -y
   - mkdir build_ceres
+  - chown -R builduser:builduser ./
   - cd build_ceres
   - sudo -u builduser makedeb -si --no-confirm
   - ls -lah *.deb
