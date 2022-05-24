@@ -41,7 +41,7 @@ steps:
 
   # Fix [E: Invalid operation satisfy] on beowulf
   # Devuan beowulf does not support [apt satisfy]. We need install makedepends manualy
-  - apt install g++ make m4
+  - apt install g++ make m4 -y
 
   - sudo -u builduser makedeb -si --no-confirm
   - ls -lah *.deb
