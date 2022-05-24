@@ -53,7 +53,9 @@ steps:
   commands:
   - su root
   - apt update
-  - apt upgrade -y # We need upgrade system on devuan ceres for building
+  - apt upgrade -y # We need upgrade system packages on devuan ceres for building
+  - apt autopurge -y # We need purge old packages on devuan ceres for building
+  - apt purge gcc-9-base -y # We need purge gcc-9 on devuan ceres for building
   - apt install gpg -y
   - wget -qO - 'https://proget.makedeb.org/debian-feeds/makedeb.pub' | gpg --dearmor | tee /usr/share/keyrings/makedeb-archive-keyring.gpg 1> /dev/null
   - echo 'deb [signed-by=/usr/share/keyrings/makedeb-archive-keyring.gpg arch=all] https://proget.makedeb.org/ makedeb main' | tee /etc/apt/sources.list.d/makedeb.list
