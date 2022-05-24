@@ -40,7 +40,7 @@ build() {
 #  mv mconfig.Linux ../
 
   cd "$srcdir"
-  mv mconfig.Linux "$pkgname-$pkgver"
+  mv mconfig.Linux "$pkgname-$pkgver"/mconfig
   cd "$pkgname-$pkgver"
   make DESTDIR="$pkgdir/"
 }
