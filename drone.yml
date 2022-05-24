@@ -21,13 +21,38 @@ steps:
   - sudo -u builduser makedeb -si --no-confirm
   - ls -lah *.deb
 
-- name: build_amd64_beowulf
-  image: dyne/devuan:beowulf
+#- name: build_amd64_beowulf
+#  image: dyne/devuan:beowulf
+#  pull: always
+#  commands:
+#  - su root
+#  - apt update
+#  - apt upgrade -y
+#  - apt install gpg -y
+#  - wget -qO - 'https://proget.makedeb.org/debian-feeds/makedeb.pub' | gpg --dearmor | tee /usr/share/keyrings/makedeb-archive-keyring.gpg 1> /dev/null
+#  - echo 'deb [signed-by=/usr/share/keyrings/makedeb-archive-keyring.gpg arch=all] https://proget.makedeb.org/ makedeb main' | tee /etc/apt/sources.list.d/makedeb.list
+#  - apt update
+#  - apt install makedeb -y
+#  - apt install sudo -y
+#  - useradd builduser -m
+#  - passwd -d builduser
+#  - printf 'builduser ALL=(ALL) ALL\n' | tee -a /etc/sudoers # passwordless sudo
+#  - chown -R builduser:builduser ./
+#
+  # Fix [E: Invalid operation satisfy] on beowulf
+  # Devuan beowulf does not support [apt satisfy]. We need install makedepends manualy
+#  - apt install g++ make m4 -y
+
+#  - sudo -u builduser makedeb -si --no-confirm
+#  - ls -lah *.deb
+
+steps:
+- name: build_amd64_ceres
+  image: dyne/devuan:ceres
   pull: always
   commands:
   - su root
   - apt update
-  - apt upgrade -y
   - apt install gpg -y
   - wget -qO - 'https://proget.makedeb.org/debian-feeds/makedeb.pub' | gpg --dearmor | tee /usr/share/keyrings/makedeb-archive-keyring.gpg 1> /dev/null
   - echo 'deb [signed-by=/usr/share/keyrings/makedeb-archive-keyring.gpg arch=all] https://proget.makedeb.org/ makedeb main' | tee /etc/apt/sources.list.d/makedeb.list
@@ -38,10 +63,5 @@ steps:
   - passwd -d builduser
   - printf 'builduser ALL=(ALL) ALL\n' | tee -a /etc/sudoers # passwordless sudo
   - chown -R builduser:builduser ./
-
-  # Fix [E: Invalid operation satisfy] on beowulf
-  # Devuan beowulf does not support [apt satisfy]. We need install makedepends manualy
-  - apt install g++ make m4 -y
-
   - sudo -u builduser makedeb -si --no-confirm
   - ls -lah *.deb
