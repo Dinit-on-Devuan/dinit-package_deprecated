@@ -46,7 +46,6 @@ steps:
 #  - sudo -u builduser makedeb -si --no-confirm
 #  - ls -lah *.deb
 
-steps:
 - name: build_amd64_ceres
   image: dyne/devuan:ceres
   pull: always
