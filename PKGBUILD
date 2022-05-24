@@ -16,7 +16,7 @@ arch=('amd64')
 
 url="https://github.com/davmac314/dinit"
 license=('Apache')
-depends=('libc6' 'dinitscripts')
+depends=('libc6')
 replaces=('sysvinit-core' 'runit-init' 'init' 'systemd' 'libnss-systemd' 'systemd-sysv' 'dinit-compat')
 provides=('init')
 
