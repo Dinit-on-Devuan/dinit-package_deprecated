@@ -6,7 +6,8 @@ steps:
   image: dyne/devuan:chimaera
   pull: always
   volumes:
-  - /tmp/packages:/debs
+    - name: debs
+      path: /tmp/debs
   commands:
   - su root
   - apt update
@@ -25,8 +26,8 @@ steps:
   - cp ../PKGBUILD .
   - sudo -u builduser makedeb -s --no-confirm
   - ls -lah *.deb
-  - mkdir /debs/chimaera_amd64
-  - mv *.deb /debs/chimaera_amd64/
+  - mkdir /tmp/debs/chimaera_amd64
+  - mv *.deb /tmp/debs/chimaera_amd64/
   - cd ..
   - exit 0
 
@@ -57,8 +58,8 @@ steps:
   - cp ../PKGBUILD .
   - sudo -u builduser makedeb -s --no-confirm
   - ls -lah *.deb
-  - mkdir /debs/beowulf_amd64
-  - mv *.deb /debs/beowulf_amd64/
+  - mkdir /tmp/debs/beowulf_amd64
+  - mv *.deb /tmp/debs/beowulf_amd64/
   - cd ..
   - exit 0
 
@@ -84,7 +85,7 @@ steps:
   - cp ../PKGBUILD .
   - sudo -u builduser makedeb -s --no-confirm
   - ls -lah *.deb
-  - mkdir /debs/ceres_amd64
-  - mv *.deb /debs/ceres_amd64/
+  - mkdir /tmp/debs/ceres_amd64
+  - mv *.deb /tmp/debs/ceres_amd64/
   - cd ..
   - exit 0
