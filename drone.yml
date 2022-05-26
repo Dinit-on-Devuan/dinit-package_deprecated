@@ -26,8 +26,6 @@ steps:
   - cp ../PKGBUILD .
   - sudo -u builduser makedeb -s --no-confirm
   - ls -lah *.deb
-  - mkdir /tmp/debs/chimaera_amd64
-  - mv *.deb /tmp/debs/chimaera_amd64/
   - cd ..
   - exit 0
 
@@ -58,8 +56,6 @@ steps:
   - cp ../PKGBUILD .
   - sudo -u builduser makedeb -s --no-confirm
   - ls -lah *.deb
-  - mkdir /tmp/debs/beowulf_amd64
-  - mv *.deb /tmp/debs/beowulf_amd64/
   - cd ..
   - exit 0
 
@@ -85,7 +81,5 @@ steps:
   - cp ../PKGBUILD .
   - sudo -u builduser makedeb -s --no-confirm
   - ls -lah *.deb
-  - mkdir /tmp/debs/ceres_amd64
-  - mv *.deb /tmp/debs/ceres_amd64/
   - cd ..
   - exit 0
