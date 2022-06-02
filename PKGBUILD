@@ -16,13 +16,13 @@ arch=('amd64')
 
 url="https://github.com/davmac314/dinit"
 license=('Apache')
-depends=('libc6')
-replaces=('sysvinit-core' 'runit-init' 'init' 'systemd' 'libnss-systemd' 'systemd-sysv' 'dinit-compat')
+depends=('libc6' 'dinitscripts')
+replaces=('sysvinit-core' 'runit-init' 'init' 'systemd' 'systemd-sysv' 'dinit-compat')
 provides=('init')
 
 ## Unfortunately makedeb does not currently support 'priority'.
 ## Issue #190: https://github.com/makedeb/makedeb/issues/190
-#priority='high'
+#priority='required'
 
 makedepends=('gcc' 'make' 'g++' 'm4' 'build-essential')
 source=("$url/releases/download/v$pkgver/$pkgname-$pkgver.tar.xz")
