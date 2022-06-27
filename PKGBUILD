@@ -27,7 +27,7 @@ provides=('init')
 makedepends=('gcc' 'make' 'g++' 'm4' 'build-essential')
 source=("$url/releases/download/v$pkgver/$pkgname-$pkgver.tar.xz")
 
-## Warning: Its checksum only valid for 0.15.1! change it if you want newer/older version
+## Warning: Its checksum is only valid for 0.15.1! change it if you want newer/older version!
 sha256sums=('c872eb325449e8e16d14e779c7177384357cf71c812a53429122f1463dd65ffc')
 
 build() {
