@@ -1,10 +1,6 @@
 kind: pipeline
 name: dinit-package
 
-platform:
-  arch: amd64
-  os: linux
-
 steps:
 - name: build_amd64_chimaera
   image: dyne/devuan:chimaera
@@ -85,12 +81,3 @@ steps:
   - ls -lah *.deb
   - cd ..
   - exit 0
-
-platform:
-  arch: arm64
-  os: linux
-
-- name: test_arm64
-  image: debian:latest
-  commands:
-  - echo "[Rock eyebrow]"
