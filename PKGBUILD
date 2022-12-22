@@ -5,7 +5,7 @@
 # Maintainer: Dinit on Devuan Project <mobin@mobintestserver.ir>
 
 pkgname=('dinit')
-pkgver=0.15.1
+pkgver=0.16.0
 pkgrel=1
 pkgdesc="Service monitoring / "init" system -- dinit init"
 
@@ -28,11 +28,11 @@ provides=('init')
 ## https://github.com/makedeb/makedeb/issues/190#issuecomment-1179339372
 control_fields=('Priority: required' 'Section: admin')
 
-makedepends=('gcc' 'make' 'g++' 'm4' 'build-essential')
+makedepends=('g++' 'make' 'm4')
 source=("$url/releases/download/v$pkgver/$pkgname-$pkgver.tar.xz")
 
-## Warning: Its checksum is only valid for 0.15.1! change it if you want newer/older version!
-sha256sums=('c872eb325449e8e16d14e779c7177384357cf71c812a53429122f1463dd65ffc')
+## Warning: Its checksum is only valid for 0.16.0! change it if you want newer/older version!
+sha256sums=('c7965451ef2f2d56996b1a733585e4476a267d2f932e02bba609fd655f89c8cb')
 
 prepare(){
   cd "$srcdir"/"$pkgname-$pkgver"/configs
