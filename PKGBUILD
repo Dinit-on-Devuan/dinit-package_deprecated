@@ -5,7 +5,7 @@
 # Maintainer: Dinit on Devuan Project <mobin@mobintestserver.ir>
 
 pkgname=('dinit')
-pkgver=0.16.0
+pkgver=0.16.1
 pkgrel=1
 pkgdesc="Service monitoring / "init" system -- dinit init"
 
@@ -32,7 +32,7 @@ makedepends=('g++' 'make' 'm4')
 source=("$url/releases/download/v$pkgver/$pkgname-$pkgver.tar.xz")
 
 ## Warning: Its checksum is only valid for 0.16.0! change it if you want newer/older version!
-sha256sums=('c7965451ef2f2d56996b1a733585e4476a267d2f932e02bba609fd655f89c8cb')
+sha256sums=('020da31210322e01c07d30343671f6ba2b1024fab0699a1df49f390d462e8f69')
 
 prepare(){
   cd "$srcdir"/"$pkgname-$pkgver"/configs
